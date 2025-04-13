@@ -1,0 +1,133 @@
+.flex-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #FFFFFF;
+}
+
+.flex-item {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+.static-picture {
+	position: absolute;
+	object-fit: cover;
+	width: 200px;
+	height: 200px;
+	z-index: 1;
+}
+
+.static-tree {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 80px;
+	z-index: 2;
+
+
+}
+
+.flex-item:hover:before {
+	top: 100px;
+	left: 80px;
+	position: absolute;
+	z-index: 2;
+	content: "";
+	background-image: url("../img/relax3.png");
+	background-size: 100% 100%;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.flex-item:hover:after {
+	text-align: center;
+	content: "Санаторий    \"Родные просторы\"";
+	left: 25px;
+	color: #092403;
+	width: 140px;
+	position: absolute;
+	z-index: 2;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+
+}
+
+
+.flex-item:active:before {
+	position: absolute;
+	top: 100px;
+	left: 80px;
+	z-index: 2;
+	content: "";
+	background-image: url("../img/relax4.png");
+	background-size: 100% 100%;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.flex-item:active:after {
+	position: absolute;
+	content: "";
+	background-image: url("../img/relax5.png");
+	z-index: 2;
+	background-size: 100% 100%;
+	width: 50px;
+	height: 50px;
+	left: 40px;
+	top: 20px;
+	animation-name: sun;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.text-when-active {
+	position: absolute;
+	color: #d07c0d;
+	z-index: 2;
+	transform: rotate(25deg);
+	top: 85px;
+	left: 75px;
+	display: none;
+}
+
+.flex-item:active .text-when-active {
+	display: block;
+}
+
+@keyframes sun {
+	to {
+		left: 140px;
+	}
+
+}
+
+.flex-item:active {
+	animation: shake-effect 0.5s infinite;
+}
+
+@keyframes shake-effect {
+	0% {
+		transform: translateY(0);
+	}
+
+	25% {
+		transform: translateY(-5px);
+	}
+
+	50% {
+		transform: translateY(5px);
+	}
+
+	75% {
+		transform: translateY(-5px);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}

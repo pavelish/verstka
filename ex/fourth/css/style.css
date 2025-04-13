@@ -1,0 +1,55 @@
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+
+}
+
+.body_container {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.task_result {
+    width: 50%;
+}
+
+.phrase_class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.bold_text {
+    font-weight: 700;
+}
+
+.phrase_class1 {
+    background: #FF9C9C;
+}
+
+.phrase_class2 {
+    background: #36CAFF;
+}
+
+.phrase_class1_list {
+    background: #cac0d7;
+}
+
+.phrase_class2_list {
+    background: #f5d5b8
+}

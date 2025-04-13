@@ -1,0 +1,179 @@
+.picture-area {
+	width: 200px;
+	height: 200px;
+	position: relative;
+	border: solid blue;
+
+}
+
+.fox-head {
+	position: absolute;
+
+	width: 0;
+	height: 0;
+
+	top: 17px;
+	left: 15px;
+	border: 28px solid transparent;
+	border-bottom: 60px solid #9c5003;
+	transform: rotate(-43deg);
+	z-index: 1;
+
+}
+
+.fox-ears {
+	position: absolute;
+
+	width: 0;
+	height: 0;
+
+	border: 8px solid transparent;
+	border-bottom: 10px solid #7f4103;
+
+}
+
+.fox-ear-front {
+	z-index: 2;
+	top: 63px;
+	left: 88px;
+	transform: rotate(38deg);
+}
+
+.fox-ear-back {
+	z-index: 0;
+	top: 56px;
+	left: 79px;
+	transform: rotate(40deg);
+
+
+}
+
+.fox-nose {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+
+	top: 47px;
+	left: 30px;
+
+	z-index: 2;
+	background: #000;
+}
+
+.fox-mouse {
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	border-radius: 50%;
+	z-index: 2;
+
+	top: 79px;
+	left: 33px;
+	transform: rotate(72deg);
+
+	background: linear-gradient(white 50%, transparent 50%);
+
+}
+
+.fox-eyes {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: white;
+	z-index: 2;
+
+	top: 70px;
+	left: 67px;
+}
+
+.fox-eyes::before {
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #000;
+	top: 3px;
+}
+
+.fox-body {
+	position: absolute;
+	top: 75px;
+	left: 50px;
+	width: 100px;
+	height: 70px;
+	background: radial-gradient(at 35% 77%, #eebd7b 3%, 25%, #9b5006 60%);
+	border-radius: 50%;
+	transform: rotate(15deg);
+	z-index: 1;
+}
+
+.fox-pow {
+	position: absolute;
+
+	width: 0;
+	height: 0;
+	border: 8px solid transparent;
+	border-bottom: 18px solid #7f4103;
+}
+
+.fox-pow-front-left {
+	top: 131px;
+	left: 59px;
+	transform: rotate(195deg);
+}
+
+.fox-pow-front-right {
+	top: 119px;
+	left: 46px;
+	transform: rotate(225deg);
+}
+
+.fox-pow-back-left {
+	z-index: 2;
+	transform: rotate(175deg);
+	top: 135px;
+	left: 125px;
+}
+
+.fox-pow-back-right {
+	transform: rotate(180deg);
+	top: 142px;
+	left: 112px;
+}
+
+.fox-tail {
+	position: absolute;
+	background: red;
+	width: 50px;
+	height: 12px;
+	border-radius: 35%;
+	transform: rotate(-45deg);
+	top: 80px;
+	left: 135px;
+	background: #9a5006;
+}
+
+.fox-tail-tip {
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-bottom: 9px solid #9a5006;
+	top: 59px;
+	left: 174px;
+	transform: rotate(45deg);
+}
+
+.fox-tail-tip::before {
+	content: "";
+	position: absolute;
+	top: -4px;
+	left: -5px;
+	width: 0;
+	height: 0;
+	border: 5px solid transparent;
+	border-bottom: 8px solid white;
+}

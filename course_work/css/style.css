@@ -1,0 +1,27 @@
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+
+}
+
+.size {
+    min-width: 300px;
+    max-height: 400px;
+    font-size: 28px;
+}
+
+.menu-wrapper {
+    box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
+    padding: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

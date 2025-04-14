@@ -1,0 +1,59 @@
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+
+}
+
+img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+.question {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.content-container {
+    box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
+    padding: 30px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game-container {
+    border: solid rgba(126, 155, 189, 0.35);
+    min-width: 350px;
+    min-height: 400px;
+    margin: 30px;
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: row;
+}
+
+.mtr-container {
+    box-sizing: border-box;
+    display: inline-block;
+    max-width: 120px;
+    max-height: 120px;
+    transition: transform 0.2s;
+    margin: 30px;
+
+}
+
+.selected {
+    border: solid rgba(126, 155, 189, 0.35);
+}

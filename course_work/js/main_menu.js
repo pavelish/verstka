@@ -1,6 +1,7 @@
 function make_rating() {
     let rating = JSON.parse(localStorage.getItem('rating'));
     let el = document.getElementById('rnk')
+    if(rating != null){
     rating = rating.sort((a, b) => {
         return a['scores'] < b['scores'];
     });
@@ -11,6 +12,7 @@ function make_rating() {
         el.appendChild(tmp_el);
 
     }
+    }
 }
 function registration() {
     let name = prompt("введите свое имя", "example_name");
@@ -19,7 +21,7 @@ function registration() {
     }
     let user_mp = localStorage.getItem('rating') != null ? JSON.parse(localStorage.getItem('rating')) : [];
     if (user_mp.find((item) => item.name == name) == undefined) {
-        if (name != root) {
+        if (name != "root") {
             user_mp.push({ 'name': name, 'level': 1, 'scores': 0 });
         }
         else {

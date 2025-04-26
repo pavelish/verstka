@@ -10,12 +10,26 @@ phrase_repainter_button.addEventListener('click', phrase_repainter);
 phrase_list_generator = window.document.getElementById('make_list_button_id');
 phrase_list_generator.addEventListener('click', make_list);
 
+function getRandomSubset(arr, count) {
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy.slice(0, count);
+}
+let lst = [];
+for (let i = 0; i < lat.length; i++) {
+    lst.push(i);
+}
+lst = getRandomSubset(lst, lst.length);
+
 function phrase_generator() {
     if (phrase_num >= lat.length) {
         alert('Фразы закончились');
     }
     else {
-        txt = window.document.createTextNode(lat[phrase_num] + ' - ' + translate[phrase_num]);
+        txt = window.document.createTextNode(lat[lst[phrase_num]] + ' - ' + translate[lst[phrase_num]]);
         phrase_num += 1;
         elem = window.document.createElement('div');
         elem.appendChild(txt);
@@ -48,10 +62,10 @@ function make_list() {
     }
     for (i = list_num; i < phrase_num; i++) {
         num_elem = window.document.createElement('li');
-        num_elem.appendChild(window.document.createTextNode(lat[i]));
+        num_elem.appendChild(window.document.createTextNode(lat[lst[i]]));
         sublist = window.document.createElement('ul');
         sublist_elem = window.document.createElement('li');
-        sublist_elem.appendChild(window.document.createTextNode(translate[i]));
+        sublist_elem.appendChild(window.document.createTextNode(translate[lst[i]]));
         sublist.appendChild(sublist_elem);
         if (i % 2) {
             num_elem.className = 'phrase_class1_list';

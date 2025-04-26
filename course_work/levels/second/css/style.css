@@ -25,7 +25,7 @@ img {
 
 .content-container {
     box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
-    padding: 30px;
+    padding: 10px;
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -34,10 +34,12 @@ img {
 }
 
 .game-container {
+    margin: 10px;
     position: relative;
     border: solid rgba(126, 155, 189, 0.35);
-    width: 700px;
-    height: 800px;
+    width: 450px;
+    height: 530px;
+    box-sizing: border-box;
 }
 
 .mtr-container {
@@ -49,23 +51,49 @@ img {
 
 }
 
+.min-size {
+    width: 30px;
+    height: 30px;
+}
+
+
 #red-zone {
     position: absolute;
-    top: 700px;
+    top: 427px;
     width: 100px;
     height: 100px;
     background-color: rgba(255, 0, 0, 0.5);
+    z-index: -1;
 }
 
 #blue-zone {
     position: absolute;
-    top: 700px;
-    left: 600px;
+    top: 427px;
+    left: 347px;
     width: 100px;
     height: 100px;
     background-color: rgba(60, 0, 255, 0.5);
+    z-index: -1;
+}
+
+#green-zone {
+    position: absolute;
+    top: 427px;
+    left: 175px;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 255, 30, 0.5);
+    z-index: -1;
 }
 
 .selected {
     border: solid rgba(126, 155, 189, 0.35);
+}
+
+.selected-green {
+    border: solid green;
+}
+
+.selected-red {
+    border: solid red;
 }

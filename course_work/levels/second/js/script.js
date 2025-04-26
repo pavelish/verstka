@@ -1,15 +1,13 @@
+let zones = [document.getElementById("blue-zone"), document.getElementById("red-zone"), document.getElementById('green-zone')];
 function makeRandomPosition() {
-    prt_1 = window.document.getElementById('prt_1');
-    prt_2 = window.document.getElementById('prt_2');
-    prt_3 = window.document.getElementById('prt_3');
-    prt_4 = window.document.getElementById('prt_4');
-    prt_5 = window.document.getElementById('prt_5');
-    prt_6 = window.document.getElementById('prt_6');
+    let parts = [];
+    for (let i = 0; i < 9; i++) {
+        parts.push(document.getElementById(`prt_${i + 1}`))
+    }
     frame_rect = window.document.getElementById('l2-container').getBoundingClientRect();
-    let parts = [prt_1, prt_2, prt_3, prt_4, prt_5, prt_6];
-    for (let i = 0; i < 6; i++) {
-        parts[i].style.left = `${getRandomInt(frame_rect.width + frame_rect.left - 350, frame_rect.left)}px`;
-        parts[i].style.top = `${getRandomInt(frame_rect.height + frame_rect.top - 350, frame_rect.top)}px`;
+    for (let i = 0; i < parts.length; i++) {
+        parts[i].style.left = `${getRandomInt(frame_rect.width - 80, 0)}px`;
+        parts[i].style.top = `${getRandomInt(frame_rect.height - 180, 0)}px`;
     }
 }
 
@@ -27,7 +25,7 @@ class drag_and_drop {
         isDragging: false,
         currentElement: null,
     }
-    drug_frame = window.document.getElementById('l2-container')
+    drug_frame = window.document.getElementById('l2-container');
     constructor() {
         this.state = { ...this.initialState };
         this.bindEvents();
@@ -46,28 +44,33 @@ class drag_and_drop {
         this.state = {
             isDragging: true,
             currentElement: event.target,
-            offsetX: event.clientX - event.target.getBoundingClientRect().left,
-            offsetY: event.clientY - event.target.getBoundingClientRect().top,
+            offsetX: event.clientX - event.target.getBoundingClientRect().left + this.drug_frame.getBoundingClientRect().left,
+            offsetY: event.clientY - event.target.getBoundingClientRect().top + this.drug_frame.getBoundingClientRect().top,
         };
     }
     onPointerMove(event) {
         if (!this.state.isDragging) {
             return;
         }
-
         let x_tmp = event.pageX - this.state.offsetX;
         let y_tmp = event.pageY - this.state.offsetY;
 
         let drugged_elem_rect = this.state.currentElement.getBoundingClientRect();
         let drug_frame_rect = this.drug_frame.getBoundingClientRect();
 
-        if (!((drug_frame_rect.left > drugged_elem_rect.left && x_tmp < drug_frame_rect.left) ||
-            (drug_frame_rect.right < drugged_elem_rect.right && x_tmp + drugged_elem_rect.width > drug_frame_rect.right))) {
-            this.state.currentElement.style.left = `${x_tmp - 150}px`;
+        if (!((drug_frame_rect.left > drugged_elem_rect.left && x_tmp + drugged_elem_rect.left < drug_frame_rect.left) ||
+            (drug_frame_rect.width < drugged_elem_rect.right && x_tmp + drugged_elem_rect.width > drug_frame_rect.width))) {
+            this.state.currentElement.style.left = `${x_tmp}px`;
         }
-        if (!((drug_frame_rect.top > drugged_elem_rect.top && y_tmp < drug_frame_rect.top + window.scrollY) ||
-            (drug_frame_rect.bottom < drugged_elem_rect.bottom && y_tmp + drugged_elem_rect.height > drug_frame_rect.bottom + window.scrollY))) {
-            this.state.currentElement.style.top = `${y_tmp - 150}px`;
+        if (!((drug_frame_rect.top > drugged_elem_rect.top && y_tmp + drugged_elem_rect.top < drug_frame_rect.top) ||
+            (drug_frame_rect.height < drugged_elem_rect.bottom && y_tmp + drugged_elem_rect.height > drug_frame_rect.height))) {
+            this.state.currentElement.style.top = `${y_tmp}px`;
+        }
+        if (y_tmp > 350) {
+            this.state.currentElement.classList.add('min-size');
+        }
+        else {
+            this.state.currentElement.classList.remove('min-size');
         }
 
     }
@@ -96,34 +99,31 @@ function make_timer() {
     time--;
 }
 function check_result() {
-    prt_1 = window.document.getElementById('prt_1');
-    prt_2 = window.document.getElementById('prt_2');
-    prt_3 = window.document.getElementById('prt_3');
-    prt_4 = window.document.getElementById('prt_4');
-    prt_5 = window.document.getElementById('prt_5');
-    prt_6 = window.document.getElementById('prt_6');
-    let blue = [prt_1, prt_2, prt_3];
-    let red = [prt_4, prt_5, prt_6];
-    for (let i = 0; i < blue.length; i++) {
-        let left = parseInt(blue[i].style.left.split('p')[0]);
-        let top = parseInt(blue[i].style.top.split('p')[0]);
-        if (!(left > 600 && left < 700 && top > 700 && top < 800)) {
-            return false;
-        }
-    }
-    for (let i = 0; i < red.length; i++) {
-        let left = parseInt(red[i].style.left.split('p')[0]);
-        let top = parseInt(red[i].style.top.split('p')[0]);
-        if (!(left > 0 && left < 100 && top > 700 && top < 800)) {
-            return false;
+    let tmp;
+    for (let i = 0; i < 3; i++) {
+        tmp_zone = zones[i].getBoundingClientRect();
+        for (let j = 0; j < 3; j++) {
+            tmp = document.getElementById(`prt_${i * 3 + j + 1}`).getBoundingClientRect();
+            if (!(tmp.left > tmp_zone.left && tmp.right < tmp_zone.right && tmp.top > tmp_zone.top)) {
+                return false;
+            }
         }
     }
     return true;
-
 }
 
 function start_func() {
+    let cnt = document.getElementById('l2-container');
+    cnt.classList.remove('selected-green');
+    cnt.classList.remove('selected-red');
     checkButton.disabled = false;
+    let tmp_mtr;
+    for (let i = 0; i < 9; i++) {
+        tmp_mtr = document.getElementById(`prt_${i + 1}`);
+        tmp_mtr.classList.remove('min-size');
+    }
+    let el = document.getElementById('l2-result');
+    el.innerHTML = "";
     makeRandomPosition();
     time = 17 - level * 5 > 0 ? 12 - level * 5 : 2;
 }
@@ -132,7 +132,9 @@ function on_end() {
     checkButton.disabled = true;
     let result_msg = document.getElementById('l2-result');
     let txt;
+    let cnt = document.getElementById('l2-container');
     if (check_result()) {
+        cnt.classList.add('selected-green');
         txt = document.createTextNode('Молодец, ты победил');
         let rating = JSON.parse(localStorage.getItem('rating'));
         rating.find((item) => item.name == localStorage.getItem('user'))['scores'] += 3 * (level + 1);
@@ -145,6 +147,7 @@ function on_end() {
         }
     }
     else {
+        cnt.classList.add('selected-red');
         txt = document.createTextNode('R сожалению, ты проиграл, давай попробуем сначала');
     }
     result_msg.appendChild(txt);

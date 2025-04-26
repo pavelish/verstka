@@ -1,9 +1,8 @@
 .first_img_div {
     position: absolute;
-    background: red;
     display: inline-block;
-    max-width: 120px;
-    max-height: 144px;
+    max-width: 100px;
+    max-height: 100px;
     transition: transform 0.2s;
 
 
@@ -15,6 +14,23 @@
     height: 100%;
     pointer-events: none;
 }
+
+#prt_1 {
+    width: 100px;
+    height: 100px;
+}
+
+#prt_2 {
+    width: 50px;
+    height: 50px;
+}
+
+#prt_3 {
+    width: 70px;
+    height: 95px;
+
+}
+
 
 #box_to_drug {
     width: 700px;

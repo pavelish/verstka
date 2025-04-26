@@ -1,10 +1,13 @@
 const matryoshkalist = [
-    { name: "Матрешка R1", img: "../../img/red_1.jpeg", color: "red" },
-    { name: "Матрешка R2", img: "../../img/red_2.jpeg", color: "red" },
-    { name: "Матрешка R3", img: "../../img/red_3.jpeg", color: "red" },
-    { name: "Матрешка B1", img: "../../img/blue_1.jpeg", color: "blue" },
-    { name: "Матрешка B2", img: "../../img/blue_2.jpeg", color: "blue" },
-    { name: "Матрешка B3", img: "../../img/blue_3.jpeg", color: "blue" }
+    { name: "Матрешка R1", img: "../../img/red_1.png", color: "red" },
+    { name: "Матрешка R2", img: "../../img/red_2.png", color: "red" },
+    { name: "Матрешка R3", img: "../../img/red_3.png", color: "red" },
+    { name: "Матрешка B1", img: "../../img/blue_1.png", color: "blue" },
+    { name: "Матрешка B2", img: "../../img/blue_2.png", color: "blue" },
+    { name: "Матрешка B3", img: "../../img/blue_3.png", color: "blue" },
+    { name: "Матрешка G1", img: "../../img/green_1.png", color: "green" },
+    { name: "Матрешка G2", img: "../../img/green_2.png", color: "green" },
+    { name: "Матрешка G3", img: "../../img/green_3.png", color: "green" }
 ];
 
 function getRandomSubset(arr, count) {

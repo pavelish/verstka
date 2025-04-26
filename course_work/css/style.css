@@ -10,18 +10,82 @@ button {
 
 }
 
-.size {
-    min-width: 300px;
-    max-height: 400px;
-    font-size: 28px;
+.registration-window {
+
+    position: absolute;
+    border: solid grey;
+    border-radius: 35px;
+    display: none;
+    padding: 15px;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -175px;
+    width: 350px;
+    height: 200px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.registration-window input {
+    min-height: 30px;
+    border: solid grey;
+    border-radius: 30px;
+    font-size: 18px;
+
+}
+
+.registration-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
+}
+
+
+
+.menu-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
+    border-radius: 20px;
+    margin: 20px;
+    margin-bottom: 30px;
 }
 
 .menu-wrapper {
     box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
     padding: 30px;
+    margin: 20px;
     border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.ranking {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 400px;
+    min-height: 300px;
+    border: solid #333;
+    border-radius: 20px;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.root-container {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    color: grey;
+}
+
+.lvl-btn {
+    display: flex;
 }

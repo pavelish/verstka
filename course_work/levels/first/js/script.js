@@ -1,9 +1,9 @@
 function getRandomColorQuestion() {
-    const arr = ["red", "blue"];
+    const arr = ["red", "blue", "green"];
     const chosen = arr[Math.floor(Math.random() * arr.length)];
     const text = (chosen === "red")
         ? "Выберите все КРАСНЫЕ матрёшки"
-        : "Выберите все СИНИЕ матрёшки";
+        : (chosen === "green") ? "Выберите все ЗЕЛЕНЫЕ матрешки" : "Выберите все СИНИЕ матрёшки";
     return { color: chosen, text };
 }
 
@@ -39,17 +39,20 @@ function make_timer() {
 function check_result() {
     matreshka_list = document.getElementsByClassName('mtr-container');
     let count = 0;
+    let chck = true;
     for (let i = 0; i < matreshka_list.length; i++) {
         if (matreshka_list[i].classList.contains('selected')) {
             if (set[i]['color'] != color) {
-                return false;
+                chck = false;
+                matreshka_list[i].classList.add('selected-red')
             }
             else {
                 count++;
+                matreshka_list[i].classList.add('selected-green')
             }
         }
     }
-    if (count == 3) {
+    if (count == 3 && chck) {
         return true;
     }
     return false;
@@ -57,7 +60,10 @@ function check_result() {
 
 function start_func() {
     checkButton.disabled = false;
-    document.getElementById('l1-container').innerHTML = '';
+    let cnt = document.getElementById('l1-container');
+    cnt.innerHTML = '';
+    cnt.classList.remove('selected-green');
+    cnt.classList.remove('selected-red');
     document.getElementById('l1-result').innerHTML = '';
     let question = getRandomColorQuestion();
     color = question["color"];
@@ -74,7 +80,9 @@ function on_end() {
     checkButton.disabled = true;
     let result_msg = document.getElementById('l1-result');
     let txt;
+    let cnt = document.getElementById("l1-container");
     if (check_result()) {
+        cnt.classList.add('selected-green');
         txt = document.createTextNode('Молодец, ты победил');
         let rating = JSON.parse(localStorage.getItem('rating'));
         rating.find((item) => item.name == localStorage.getItem('user'))['scores'] += 3 * (level + 1);
@@ -87,7 +95,8 @@ function on_end() {
         }
     }
     else {
-        txt = document.createTextNode('R сожалению, ты проиграл, давай попробуем сначала');
+        cnt.classList.add('selected-red');
+        txt = document.createTextNode('К сожалению, ты проиграл, давай попробуем сначала');
     }
     result_msg.appendChild(txt);
     setTimeout(start_func, 4000);

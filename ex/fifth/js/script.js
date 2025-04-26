@@ -1,3 +1,4 @@
+const error_px = 5;
 function makeRandomPosition() {
     prt_1 = window.document.getElementById('prt_1');
     prt_2 = window.document.getElementById('prt_2');
@@ -105,9 +106,13 @@ class drag_and_drop {
         let prt2_rect = document.getElementById('prt_2').getBoundingClientRect();
         let prt3_rect = document.getElementById('prt_3').getBoundingClientRect();
         let prt4_rect = document.getElementById('prt_4').getBoundingClientRect();
-        let check = Math.abs(prt2_rect.left - prt1_rect.right) < 5 &&
-            Math.abs(prt2_rect.bottom - prt4_rect.top) < 5 &&
-            Math.abs(prt1_rect.bottom - prt3_rect.top) < 5;
+        let check = Math.abs(prt2_rect.left - prt1_rect.left - 73) < error_px &&
+            Math.abs(prt2_rect.top - prt1_rect.top - 43) < error_px &&
+            Math.abs(prt3_rect.left - prt1_rect.left + 30) < error_px &&
+            Math.abs(prt3_rect.top - prt1_rect.top) < error_px &&
+            Math.abs(prt4_rect.left - prt1_rect.left - 8) < error_px &&
+            Math.abs(prt4_rect.top - prt1_rect.top + 88) < error_px;
+        console.log(check);
         let win_mas = window.document.getElementById('win-massege');
         let sunny = window.document.getElementById('sun');
         if (check) {
@@ -116,6 +121,9 @@ class drag_and_drop {
             win_mas.textContent = "Поздравляем, вы победили!";
             sunny.classList.remove('win-massege');
             sunny.classList.add('win-animation');
+            for (let i = 0; i < 4; i++) {
+                prts[i].classList.add(`prt-${i + 1}-act`);
+            }
         }
         else {
             win_mas.style.display = 'none';
